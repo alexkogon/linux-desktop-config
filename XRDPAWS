@@ -1,0 +1,40 @@
+sudo yum –y groupinstall "Server with GUI"
+
+
+sudo vi /etc/yum.repos.d/xrdp.repo
+
+add:
+
+[xrdp]
+name=xrdp
+baseurl=http://li.nux.ro/download/nux/dextop/el7/x86_64/
+enabled=1
+gpgcheck=0
+
+
+sudo yum -y install tigervnc-server
+sudo yum -y install xrdp tigervnc-server
+
+sudo systemctl start xrdp.service
+
+sudo systemctl enable xrdp.service
+
+
+
+
+sudo yum -y update
+sudo yum groupinstall -y "Server with GUI"
+sudo rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-1.el7.nux.noarch.rpm
+sudo yum install -y xrdp tigervnc-server
+chcon --type=bin_t /usr/sbin/xrdp
+chcon --type=bin_t /usr/sbin/xrdp-sesman
+sudo systemctl start xrdp
+
+
+sudo passwd ec2-user
+
+
+sudo su
+passwd
+
+
