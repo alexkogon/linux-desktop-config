@@ -3,11 +3,11 @@ MAINTAINER alko@j2medev.info
 
 USER root
 
-RUN apt-get update
+RUN apk update
 
 
 # Install some dependencies
-RUN apt-get -y -q install curl rubygems
+RUN apk -y -q install curl rubygems
 
 
 # Install rvm
@@ -26,12 +26,12 @@ RUN curl http://chromedriver.storage.googleapis.com/2.27/chromedriver_linux64.zi
 RUN unzip chromedriver_linux64.zip
 RUN cp chromedriver /usr/local/bin/chromedriver
 
-RUN apt-get -y install libxss1 libappindicator1 libindicator7 libpango1.0-0 fonts-liberation xdg-utils
+RUN apk -y install libxss1 libappindicator1 libindicator7 libpango1.0-0 fonts-liberation xdg-utils
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN dpkg -i google-chrome*.deb
 
-RUN apt-get install -y apt-utils
-RUN apt-get install -y openssh-server
+RUN apk install -y apt-utils
+RUN apk install -y openssh-server
 RUN mkdir /var/run/sshd
 
 RUN echo 'root:screencast' | chpasswd
