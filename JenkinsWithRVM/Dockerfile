@@ -1,4 +1,4 @@
-FROM jenkins:latest
+FROM jenkins:alpine
 MAINTAINER alko@j2medev.info
 
 USER root
